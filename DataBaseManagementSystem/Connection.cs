@@ -25,9 +25,9 @@ namespace DataBaseManagementSystem
             return dataAdapter;
         }
 
-        public DataSet fillDataSet(String dataBasePath)
+        public DataSet fillDataSet()
         {
-            conn = new OleDbConnection(dataBasePath);
+            conn = new OleDbConnection(MainForm.connectionPath);
             conn.Close();
             conn.Open();
 
@@ -38,18 +38,18 @@ namespace DataBaseManagementSystem
             return ds;
         }
 
-        public System.Data.DataTable loadDataBase(String dataBasePath)
+        public System.Data.DataTable loadDataBase()
         {
             System.Data.DataTable t1 = null;
 
             try
             {
-                DataSet ds = fillDataSet(dataBasePath);
+                DataSet ds = fillDataSet();
 
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     t1 = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Columns,
-                    new object[] { null, null, r["TABLE_NAME"], null });
+                        new object[] { null, null, r["TABLE_NAME"], null });
                 }
             }
             finally
