@@ -13,34 +13,38 @@ using System.Windows;
 
 namespace DataBaseManagementSystem
 {
-    class Connection
+    public class Connection
     {
-        OleDbConnection conn;
+        OleDbConnection con;
 
+        public Connection(String cP) { con = new OleDbConnection(cP); }
+
+        // filling data apadter
         public OleDbDataAdapter fillDataWeGetBefore(String table_name)
         {
-            OleDbCommand com = new OleDbCommand("SELECT * FROM " + table_name, conn);
+            OleDbCommand com = new OleDbCommand("SELECT * FROM " + table_name, con);
             OleDbDataAdapter dataAdapter = new OleDbDataAdapter(com);
 
             return dataAdapter;
         }
 
+        // filling data set
         public DataSet fillDataSet()
         {
-            conn = new OleDbConnection(MainForm.connectionPath);
-            conn.Close();
-            conn.Open();
+            con.Close();
+            con.Open();
 
             DataSet ds = new DataSet();
             ds.Tables.Clear();
-            ds.Tables.Add(conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" }));
+            ds.Tables.Add(con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" }));
 
             return ds;
         }
 
-        public System.Data.DataTable loadDataBase()
+        // filling data table
+        public DataTable loadDataBase()
         {
-            System.Data.DataTable t1 = null;
+            DataTable t1 = null;
 
             try
             {
@@ -48,13 +52,13 @@ namespace DataBaseManagementSystem
 
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
-                    t1 = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Columns,
+                    t1 = con.GetOleDbSchemaTable(OleDbSchemaGuid.Columns,
                         new object[] { null, null, r["TABLE_NAME"], null });
                 }
             }
             finally
             {
-                if (conn.State == ConnectionState.Open) conn.Close();
+                if (con.State == ConnectionState.Open) con.Close();
             }
 
             return t1;
