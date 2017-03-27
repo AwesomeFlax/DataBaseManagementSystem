@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.OleDb;
-using System.IO;
-using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace DataBaseManagementSystem
 {
@@ -18,8 +8,9 @@ namespace DataBaseManagementSystem
     {
         OleDbConnection con;
 
-        public sqlQueries (String cP) { con = new OleDbConnection(cP); }
+        public sqlQueries(String cP) { con = new OleDbConnection(cP); }
 
+        // update data in current row
         public void update(String TableName, String ColumnName, String TextInCell, String IDColumn, String CellText)
         {
             OleDbDataAdapter ad = new OleDbDataAdapter("SELECT * FROM " + TableName + "", con);
@@ -35,11 +26,12 @@ namespace DataBaseManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
                 con.Close();
             }
         }
 
+        // delete selected row
         public void delete(String TableName, String IDColumn, String CellText)
         {
             OleDbDataAdapter ad = new OleDbDataAdapter("SELECT * FROM " + TableName + "", con);
@@ -51,22 +43,21 @@ namespace DataBaseManagementSystem
             {
                 con.Open();
                 ad.DeleteCommand.ExecuteNonQuery();
-                MessageBox.Show("Success!");
                 con.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
                 con.Close();
             }
         }
 
-        
+        // add new line into table
         public void add(string TableName, string ColumnsNames, string NewData)
         {
-            string Insert = "INSERT INTO `" + TableName + "` ( " + ColumnsNames + " ) VALUES ( " + NewData + ")";
-            OleDbDataAdapter ad = new OleDbDataAdapter("SELECT * FROM " + TableName + "", con);
+            string Insert = "INSERT INTO `" + TableName + "` (" + ColumnsNames + ") VALUES ( " + NewData + ")";
 
+            OleDbDataAdapter ad = new OleDbDataAdapter("SELECT * FROM " + TableName + "", con);
             ad.InsertCommand = new OleDbCommand(Insert, con);
 
             try
@@ -77,7 +68,49 @@ namespace DataBaseManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
+
+        // delete table from DB
+        public void delete_table(string TableName)
+        {
+            string query = "DROP TABLE `" + TableName + "`";
+
+            OleDbDataAdapter ad = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            ad.DeleteCommand = new OleDbCommand(query, con);
+
+            try
+            {
+                con.Open();
+                ad.DeleteCommand.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
+
+        // add new table in DB
+        public void add_table(string TableName, string NewColumnName, string Type)
+        {
+            string query = "CREATE TABLE `" + TableName + "` (`" + NewColumnName + "` " + Type + ")";
+
+            OleDbDataAdapter ad = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            ad.InsertCommand = new OleDbCommand(query, con);
+
+            try
+            {
+                con.Open();
+                ad.InsertCommand.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 con.Close();
             }
         }

@@ -15,10 +15,8 @@ namespace DataBaseManagementSystem
     {
         Connection con;
         sqlQueries sqlQue;
-
-        //later to get from the button
-        public String connectionPath = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\";
-
+        const String connectionPath = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\";        //заменить на private (get set)
+        String selectedTable;
         DataSet ds;
 
         public MainForm()
@@ -26,15 +24,27 @@ namespace DataBaseManagementSystem
             InitializeComponent();
         }
 
-        public String getConnectionPath()
+        // makes buttons visible
+        void openAccess()
+        {
+            addTable.Visible = true;
+            deleteTable.Visible = true;
+            addNote.Visible = true;
+        }
+
+        // access [1]
+        String getCP()
         {
             return connectionPath;
         }
 
-        void loadFromMDBFile()
+        // what to do to connect software with .mdb file
+        public void loadFromMDBFile()
         {
             ds = con.fillDataSet();
             System.Data.DataTable t;
+
+            listBox.Items.Clear();
 
             foreach (DataRow r in ds.Tables[0].Rows)
             {
@@ -56,36 +66,51 @@ namespace DataBaseManagementSystem
             if (listBox.SelectedItem != null)
             {
                 DataView dv = new DataView(ds.Tables[listBox.SelectedItem.ToString()]);
+                selectedTable = listBox.SelectedItem.ToString();
                 mainDataGrid.DataSource = dv;
             }
             else
-                MessageBox.Show("Выберете таблицу из списка");
+                MessageBox.Show("Choose a table in table list");
         }
 
         // data update
         private void mainDataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            sqlQue.update(listBox.SelectedItem.ToString(),
-                    mainDataGrid.Columns[mainDataGrid.CurrentCell.ColumnIndex].HeaderText.ToString(),
-                    mainDataGrid.CurrentCell.Value.ToString(),
-                    mainDataGrid.Columns[0].HeaderText.ToString(),
-                    mainDataGrid[0, mainDataGrid.CurrentCell.RowIndex].Value.ToString());
+            if (mainDataGrid.Columns.Count > 1)
+            {
+                sqlQue.update(selectedTable,
+                        mainDataGrid.Columns[mainDataGrid.CurrentCell.ColumnIndex].HeaderText.ToString(),
+                        mainDataGrid.CurrentCell.Value.ToString(),
+                        mainDataGrid.Columns[0].HeaderText.ToString(),
+                        mainDataGrid[0, mainDataGrid.CurrentCell.RowIndex].Value.ToString());
+
+                loadFromMDBFile();
+            }
         }
 
         // data delete
         private void mainDataGrid_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar == 8) && (mainDataGrid.SelectedRows.Count == 1))
-                sqlQue.delete(listBox.SelectedItem.ToString(),
+                sqlQue.delete(selectedTable,
                     mainDataGrid.Columns[0].HeaderText.ToString(),
                     mainDataGrid[0, mainDataGrid.SelectedRows[0].Index].Value.ToString());
+
+            loadFromMDBFile();
         }
 
         // when new row was added
         private void mainDataGrid_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            int k = int.Parse(mainDataGrid[0, mainDataGrid.CurrentCell.RowIndex - 1].Value.ToString());
-            mainDataGrid[0, mainDataGrid.CurrentCell.RowIndex].Value = ++k;
+            int k = 0;
+
+            try
+            {
+                k = int.Parse(mainDataGrid[0, mainDataGrid.CurrentCell.RowIndex - 1].Value.ToString());
+                mainDataGrid[0, mainDataGrid.CurrentCell.RowIndex].Value = ++k;
+            }
+            catch
+            { }
         }
 
         // addind data via inserting it and pressing button
@@ -109,8 +134,10 @@ namespace DataBaseManagementSystem
                 }
             }
 
-            sqlQue.add(listBox.SelectedItem.ToString(),
+            sqlQue.add(selectedTable,
                     ColumnsNames, NewData);
+
+            loadFromMDBFile();
         }
 
         // allows openin files (only root directory)
@@ -127,12 +154,13 @@ namespace DataBaseManagementSystem
                 {
                     String uncutted = openFileDialog.FileName;
                     String cutted = uncutted.Remove(0, uncutted.LastIndexOf("\\") + 1);
-                    connectionPath = connectionPath + cutted;
+                    String temp = getCP() + cutted;
 
-                    sqlQue = new sqlQueries(connectionPath);
-                    con = new Connection(connectionPath);
+                    sqlQue = new sqlQueries(temp);
+                    con = new Connection(temp);
 
                     loadFromMDBFile();
+                    openAccess();
                 }
             }
             catch (Exception x)
@@ -140,6 +168,35 @@ namespace DataBaseManagementSystem
                 MessageBox.Show(x.Message);
             }
 
+        }
+
+        // deletes selected table
+        private void deleteTable_Click(object sender, EventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                string message = "Are you sure you want to delete table '" + selectedTable + "'?";
+                string caption = "Table delete";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+
+                result = MessageBox.Show(message, caption, buttons);
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    sqlQue.delete_table(selectedTable);
+                    loadFromMDBFile();
+                }
+            }
+            else
+                MessageBox.Show("Choose a table in table list");
+        }
+
+        // creates special form to add new table
+        private void addTable_Click(object sender, EventArgs e)
+        {
+            newTableAdd obj = new newTableAdd(connectionPath, this);
+            obj.Show();
         }
     }
 }
