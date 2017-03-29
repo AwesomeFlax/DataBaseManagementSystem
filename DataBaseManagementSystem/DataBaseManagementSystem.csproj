@@ -58,6 +58,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="customQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customQuery.Designer.cs">
+      <DependentUpon>customQuery.cs</DependentUpon>
+    </Compile>
     <Compile Include="newTableAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="customQuery.resx">
+      <DependentUpon>customQuery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="newTableAdd.resx">
       <DependentUpon>newTableAdd.cs</DependentUpon>

@@ -35,17 +35,22 @@ namespace DataBaseManagementSystem
         private void addInDB_Click(object sender, EventArgs e)
         {
             // добавить 2 поле и сделать галочки "ключ/не ключ"
-            // сделать проверку на уникальность имени таблицы
-            // сделать проверку на заполненность всех полей
+           
+            try
+            {
+                sqlQue.add_table(tableNameTextBox.Text,
+                                initFieldNameTextBox.Text,
+                                fieldTypeComboBox.Items[fieldTypeComboBox.SelectedIndex].ToString()
+                                 );
 
-            sqlQue.add_table(tableNameTextBox.Text,
-                            initFieldNameTextBox.Text,
-                            fieldTypeComboBox.Items[fieldTypeComboBox.SelectedIndex].ToString()
-                             );
+                refForm.loadFromMDBFile();
 
-            refForm.loadFromMDBFile();
-
-            Close();
+                Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Please ensure you have filled all the fileds!");
+            }
         }
     }
 }

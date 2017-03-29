@@ -15,8 +15,10 @@ namespace DataBaseManagementSystem
     {
         Connection con;
         sqlQueries sqlQue;
-        const String connectionPath = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\";        //заменить на private (get set)
+
+        String connectionPath;
         String selectedTable;
+
         DataSet ds;
 
         public MainForm()
@@ -30,19 +32,20 @@ namespace DataBaseManagementSystem
             addTable.Visible = true;
             deleteTable.Visible = true;
             addNote.Visible = true;
+            xMLOperationToolStripMenuItem.Enabled = true;
         }
 
-        // access [1]
+        // access
         String getCP()
         {
-            return connectionPath;
+            return @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\";
         }
 
         // what to do to connect software with .mdb file
         public void loadFromMDBFile()
         {
             ds = con.fillDataSet();
-            System.Data.DataTable t;
+            DataTable t;
 
             listBox.Items.Clear();
 
@@ -154,10 +157,10 @@ namespace DataBaseManagementSystem
                 {
                     String uncutted = openFileDialog.FileName;
                     String cutted = uncutted.Remove(0, uncutted.LastIndexOf("\\") + 1);
-                    String temp = getCP() + cutted;
+                    connectionPath = getCP() + cutted;
 
-                    sqlQue = new sqlQueries(temp);
-                    con = new Connection(temp);
+                    sqlQue = new sqlQueries(connectionPath);
+                    con = new Connection(connectionPath);
 
                     loadFromMDBFile();
                     openAccess();
@@ -197,6 +200,12 @@ namespace DataBaseManagementSystem
         {
             newTableAdd obj = new newTableAdd(connectionPath, this);
             obj.Show();
+        }
+
+        private void exportToXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            customQuery customQue = new customQuery(connectionPath);
+            customQue.Show();
         }
     }
 }
