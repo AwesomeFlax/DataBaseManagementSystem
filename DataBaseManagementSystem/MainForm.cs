@@ -32,7 +32,7 @@ namespace DataBaseManagementSystem
             addTable.Visible = true;
             deleteTable.Visible = true;
             addNote.Visible = true;
-            xMLOperationToolStripMenuItem.Enabled = true;
+            ownQueMenu.Enabled = true;
         }
 
         // access

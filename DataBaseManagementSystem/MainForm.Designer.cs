@@ -36,7 +36,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expotrToXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLOperationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ownQueMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.listBox = new System.Windows.Forms.ListBox();
             this.tablesListLabel = new System.Windows.Forms.Label();
             this.addNote = new System.Windows.Forms.Button();
@@ -86,37 +86,37 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open *.mdb";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Open *.XML";
             // 
             // expotrToXMLToolStripMenuItem
             // 
             this.expotrToXMLToolStripMenuItem.Name = "expotrToXMLToolStripMenuItem";
-            this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.expotrToXMLToolStripMenuItem.Text = "Expotr to XML";
             // 
             // xMLOperationToolStripMenuItem
             // 
             this.xMLOperationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToXMLToolStripMenuItem});
+            this.ownQueMenu});
             this.xMLOperationToolStripMenuItem.Name = "xMLOperationToolStripMenuItem";
             this.xMLOperationToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.xMLOperationToolStripMenuItem.Text = "Queries";
             // 
-            // exportToXMLToolStripMenuItem
+            // ownQueMenu
             // 
-            this.exportToXMLToolStripMenuItem.Enabled = false;
-            this.exportToXMLToolStripMenuItem.Name = "exportToXMLToolStripMenuItem";
-            this.exportToXMLToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.exportToXMLToolStripMenuItem.Text = "Enter your own";
-            this.exportToXMLToolStripMenuItem.Click += new System.EventHandler(this.exportToXMLToolStripMenuItem_Click);
+            this.ownQueMenu.Enabled = false;
+            this.ownQueMenu.Name = "ownQueMenu";
+            this.ownQueMenu.Size = new System.Drawing.Size(154, 22);
+            this.ownQueMenu.Text = "Enter your own";
+            this.ownQueMenu.Click += new System.EventHandler(this.exportToXMLToolStripMenuItem_Click);
             // 
             // listBox
             // 
@@ -256,7 +256,7 @@
         private System.Windows.Forms.ListBox listBox;
         private System.Windows.Forms.ToolStripMenuItem expotrToXMLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xMLOperationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToXMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ownQueMenu;
         private System.Windows.Forms.Label tablesListLabel;
         private System.Windows.Forms.Button addNote;
         private System.Windows.Forms.Button deleteTable;
