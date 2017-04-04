@@ -78,7 +78,7 @@ namespace DataBaseManagementSystem
         // delete table from DB
         public void delete_table(string TableName)
         {
-            string query = "DROP TABLE `" + TableName;
+            string query = "DROP TABLE `" + TableName + "`";
 
             ad = new OleDbDataAdapter("Select * FROM " + TableName, con);
             ad.DeleteCommand = new OleDbCommand(query, con);

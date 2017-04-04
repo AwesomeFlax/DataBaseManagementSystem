@@ -43,9 +43,12 @@
             // 
             // customDataGrid
             // 
+            this.customDataGrid.AllowUserToAddRows = false;
+            this.customDataGrid.AllowUserToDeleteRows = false;
             this.customDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customDataGrid.Location = new System.Drawing.Point(176, 67);
             this.customDataGrid.Name = "customDataGrid";
+            this.customDataGrid.ReadOnly = true;
             this.customDataGrid.Size = new System.Drawing.Size(522, 260);
             this.customDataGrid.TabIndex = 1;
             // 
@@ -90,6 +93,7 @@
             this.searchGB.Controls.Add(this.searchButton);
             this.searchGB.Controls.Add(this.whatToSearch);
             this.searchGB.Controls.Add(this.columnList);
+            this.searchGB.Enabled = false;
             this.searchGB.Location = new System.Drawing.Point(12, 333);
             this.searchGB.Name = "searchGB";
             this.searchGB.Size = new System.Drawing.Size(686, 63);
@@ -106,6 +110,7 @@
             this.searchButton.TabIndex = 7;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // whatToSearch
             // 

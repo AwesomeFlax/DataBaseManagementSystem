@@ -86,20 +86,20 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.openToolStripMenuItem.Text = "Open *.mdb";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem.Text = "Open *.XML";
             // 
             // expotrToXMLToolStripMenuItem
             // 
             this.expotrToXMLToolStripMenuItem.Name = "expotrToXMLToolStripMenuItem";
-            this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.expotrToXMLToolStripMenuItem.Text = "Expotr to XML";
             // 
             // xMLOperationToolStripMenuItem
@@ -133,7 +133,7 @@
             // 
             this.tablesListLabel.AutoSize = true;
             this.tablesListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tablesListLabel.Location = new System.Drawing.Point(12, 52);
+            this.tablesListLabel.Location = new System.Drawing.Point(12, 54);
             this.tablesListLabel.Name = "tablesListLabel";
             this.tablesListLabel.Size = new System.Drawing.Size(136, 15);
             this.tablesListLabel.TabIndex = 5;
@@ -144,7 +144,7 @@
             this.addNote.FlatAppearance.BorderSize = 0;
             this.addNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addNote.Image = ((System.Drawing.Image)(resources.GetObject("addNote.Image")));
-            this.addNote.Location = new System.Drawing.Point(713, 27);
+            this.addNote.Location = new System.Drawing.Point(264, 29);
             this.addNote.Name = "addNote";
             this.addNote.Size = new System.Drawing.Size(40, 40);
             this.addNote.TabIndex = 6;
@@ -157,7 +157,7 @@
             this.deleteTable.FlatAppearance.BorderSize = 0;
             this.deleteTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteTable.Image = ((System.Drawing.Image)(resources.GetObject("deleteTable.Image")));
-            this.deleteTable.Location = new System.Drawing.Point(667, 27);
+            this.deleteTable.Location = new System.Drawing.Point(218, 29);
             this.deleteTable.Name = "deleteTable";
             this.deleteTable.Size = new System.Drawing.Size(40, 40);
             this.deleteTable.TabIndex = 7;
@@ -172,7 +172,7 @@
             this.addTable.FlatAppearance.BorderSize = 0;
             this.addTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addTable.Image = ((System.Drawing.Image)(resources.GetObject("addTable.Image")));
-            this.addTable.Location = new System.Drawing.Point(624, 27);
+            this.addTable.Location = new System.Drawing.Point(175, 29);
             this.addTable.Margin = new System.Windows.Forms.Padding(0);
             this.addTable.Name = "addTable";
             this.addTable.Size = new System.Drawing.Size(40, 40);
@@ -186,6 +186,7 @@
             this.searchGB.Controls.Add(this.searchButton);
             this.searchGB.Controls.Add(this.whatToSearch);
             this.searchGB.Controls.Add(this.columnList);
+            this.searchGB.Enabled = false;
             this.searchGB.Location = new System.Drawing.Point(15, 408);
             this.searchGB.Name = "searchGB";
             this.searchGB.Size = new System.Drawing.Size(738, 63);
@@ -202,6 +203,7 @@
             this.searchButton.TabIndex = 7;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click_1);
             // 
             // whatToSearch
             // 

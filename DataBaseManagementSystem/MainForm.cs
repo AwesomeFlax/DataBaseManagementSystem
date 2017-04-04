@@ -16,8 +16,8 @@ namespace DataBaseManagementSystem
         Connection con;
         sqlQueries sqlQue;
 
-        String connectionPath;
-        String selectedTable;
+        string connectionPath;
+        string selectedTable;
 
         DataSet ds;
 
@@ -71,6 +71,15 @@ namespace DataBaseManagementSystem
                 DataView dv = new DataView(ds.Tables[listBox.SelectedItem.ToString()]);
                 selectedTable = listBox.SelectedItem.ToString();
                 mainDataGrid.DataSource = dv;
+
+                searchGB.Enabled = true;
+
+                columnList.Items.Clear();
+
+                for (int i = 0; i < ds.Tables[selectedTable].Columns.Count; i++)
+                {
+                    columnList.Items.Add(ds.Tables[selectedTable].Columns[i].ToString());
+                }
             }
             else
                 MessageBox.Show("Choose a table in table list");
@@ -206,6 +215,22 @@ namespace DataBaseManagementSystem
         {
             customQuery customQue = new customQuery(connectionPath);
             customQue.Show();
+        }
+
+        // try search data that equals data in textbox
+        private void searchButton_Click_1(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(ds.Tables[selectedTable]);
+            mainDataGrid.DataSource = dv;
+
+            try
+            {
+                dv.RowFilter = columnList.Text + "= '" + whatToSearch.Text + "'";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

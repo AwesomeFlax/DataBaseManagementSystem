@@ -16,18 +16,36 @@ namespace DataBaseManagementSystem
         sqlQueries sqlQue;
         Connection con;
 
+        DataView dv;
+        DataSet ds;
+
+        private string selectedTable = "";
+
         public customQuery()
         {
             InitializeComponent();
         }
 
+        // to get table 
+        string getSelectedTable ()
+        {
+            return selectedTable;
+        }
+
+        // to set table
+        void setSelectedTable(string _selectedTable)
+        {
+            selectedTable = _selectedTable;
+        }
+
+        // constuctor to setup and upload everything
         public customQuery(String CP)
         {
             sqlQue = new sqlQueries(CP);
             con = new Connection(CP);
             InitializeComponent();
 
-            DataSet ds = new DataSet();
+            ds = new DataSet();
             ds = con.fillDataSet();
             DataTable t;
 
@@ -47,16 +65,44 @@ namespace DataBaseManagementSystem
             }
         }
 
+        // to get data according to SQL query
         private void sendQuery_Click(object sender, EventArgs e)
         {
+            setSelectedTable(listBox.SelectedItem.ToString());
+            searchGB.Enabled = true;
+
+            columnList.Items.Clear();
+
+            for (int i = 0; i < ds.Tables[getSelectedTable()].Columns.Count; i++)
+            {
+                columnList.Items.Add(ds.Tables[getSelectedTable()].Columns[i].ToString());
+            }
+
             customDataGrid.AutoGenerateColumns = true;
-            customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, listBox.SelectedItem.ToString());
-            customDataGrid.DataMember = listBox.SelectedItem.ToString();
+            customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, getSelectedTable());
+            customDataGrid.DataMember = getSelectedTable();
         }
 
+        // set up default string into string query
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             userQuery.Text = "SELECT * FROM " + listBox.SelectedItem.ToString();
+        }
+
+        // try search data that equals data in textbox
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            dv = new DataView(ds.Tables[getSelectedTable()]);
+            customDataGrid.DataSource = dv;
+
+            try
+            {
+                dv.RowFilter = columnList.Text + "= '" + whatToSearch.Text + "'";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
