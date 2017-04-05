@@ -232,5 +232,12 @@ namespace DataBaseManagementSystem
                 MessageBox.Show(ex.Message);
             }
         }
+
+        // edit table
+        private void editTable_Click(object sender, EventArgs e)
+        {
+            editExistingTable obj = new editExistingTable(connectionPath, this);
+            obj.Show();
+        }
     }
 }

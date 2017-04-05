@@ -20,7 +20,7 @@ namespace DataBaseManagementSystem
             InitializeComponent();
         }
 
-        public newTableAdd(String cP, MainForm _refForm)
+        public newTableAdd(string cP, MainForm _refForm)
         {
             sqlQue = new sqlQueries(cP);
             this.refForm = _refForm;
@@ -49,7 +49,7 @@ namespace DataBaseManagementSystem
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Please ensure you have filled all the fileds!");
+                MessageBox.Show("Please ensure you have filled all the fields!");
             }
         }
     }

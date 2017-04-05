@@ -46,6 +46,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.whatToSearch = new System.Windows.Forms.TextBox();
             this.columnList = new System.Windows.Forms.ComboBox();
+            this.editTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDataGrid)).BeginInit();
             this.menu.SuspendLayout();
             this.searchGB.SuspendLayout();
@@ -144,7 +145,7 @@
             this.addNote.FlatAppearance.BorderSize = 0;
             this.addNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addNote.Image = ((System.Drawing.Image)(resources.GetObject("addNote.Image")));
-            this.addNote.Location = new System.Drawing.Point(264, 29);
+            this.addNote.Location = new System.Drawing.Point(713, 32);
             this.addNote.Name = "addNote";
             this.addNote.Size = new System.Drawing.Size(40, 40);
             this.addNote.TabIndex = 6;
@@ -157,7 +158,7 @@
             this.deleteTable.FlatAppearance.BorderSize = 0;
             this.deleteTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteTable.Image = ((System.Drawing.Image)(resources.GetObject("deleteTable.Image")));
-            this.deleteTable.Location = new System.Drawing.Point(218, 29);
+            this.deleteTable.Location = new System.Drawing.Point(278, 32);
             this.deleteTable.Name = "deleteTable";
             this.deleteTable.Size = new System.Drawing.Size(40, 40);
             this.deleteTable.TabIndex = 7;
@@ -172,7 +173,7 @@
             this.addTable.FlatAppearance.BorderSize = 0;
             this.addTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addTable.Image = ((System.Drawing.Image)(resources.GetObject("addTable.Image")));
-            this.addTable.Location = new System.Drawing.Point(175, 29);
+            this.addTable.Location = new System.Drawing.Point(175, 32);
             this.addTable.Margin = new System.Windows.Forms.Padding(0);
             this.addTable.Name = "addTable";
             this.addTable.Size = new System.Drawing.Size(40, 40);
@@ -220,11 +221,25 @@
             this.columnList.Size = new System.Drawing.Size(149, 21);
             this.columnList.TabIndex = 5;
             // 
+            // editTable
+            // 
+            this.editTable.FlatAppearance.BorderSize = 0;
+            this.editTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editTable.Image = ((System.Drawing.Image)(resources.GetObject("editTable.Image")));
+            this.editTable.Location = new System.Drawing.Point(225, 32);
+            this.editTable.Name = "editTable";
+            this.editTable.Size = new System.Drawing.Size(40, 40);
+            this.editTable.TabIndex = 10;
+            this.editTable.UseVisualStyleBackColor = true;
+            this.editTable.Visible = false;
+            this.editTable.Click += new System.EventHandler(this.editTable_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(765, 478);
+            this.Controls.Add(this.editTable);
             this.Controls.Add(this.searchGB);
             this.Controls.Add(this.addTable);
             this.Controls.Add(this.deleteTable);
@@ -267,5 +282,6 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox whatToSearch;
         private System.Windows.Forms.ComboBox columnList;
+        private System.Windows.Forms.Button editTable;
     }
 }
