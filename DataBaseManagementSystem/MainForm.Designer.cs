@@ -226,7 +226,7 @@
             this.editTable.FlatAppearance.BorderSize = 0;
             this.editTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editTable.Image = ((System.Drawing.Image)(resources.GetObject("editTable.Image")));
-            this.editTable.Location = new System.Drawing.Point(225, 32);
+            this.editTable.Location = new System.Drawing.Point(226, 32);
             this.editTable.Name = "editTable";
             this.editTable.Size = new System.Drawing.Size(40, 40);
             this.editTable.TabIndex = 10;

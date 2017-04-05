@@ -33,6 +33,7 @@ namespace DataBaseManagementSystem
             deleteTable.Visible = true;
             addNote.Visible = true;
             ownQueMenu.Enabled = true;
+            editTable.Visible = true;
         }
 
         // access

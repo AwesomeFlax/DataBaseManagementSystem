@@ -117,6 +117,66 @@ namespace DataBaseManagementSystem
             }
         }
 
+        public void add_column_to_table(string TableName, string ColumnName, string Type)
+        {
+            string query = "ALTER TABLE `" + TableName + "` ADD `" + ColumnName + "` " + Type + "";
+
+            ad = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            ad.InsertCommand = new OleDbCommand(query, con);
+
+            try
+            {
+                con.Open();
+                ad.InsertCommand.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
+
+        public void delete_column_from_table(string TableName, string ColumnName)
+        {
+            string query = "ALTER TABLE `" + TableName + "` DROP `" + ColumnName + "`";
+
+            ad = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            ad.DeleteCommand = new OleDbCommand(query, con);
+
+            try
+            {
+                con.Open();
+                ad.DeleteCommand.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
+
+        public void rename_column_in_table(string TableName, string ColumnName, string NewColumnName, string Type)
+        {
+            string query = "ALTER TABLE `" + TableName + "` CHANGE COLUMN `" + ColumnName + "` " + NewColumnName + " " + Type;
+
+            ad = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            ad.UpdateCommand = new OleDbCommand(query, con);
+            
+            try
+            {
+                con.Open();
+                ad.UpdateCommand.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                con.Close();
+            }
+        }
+
         public DataSet custom_que(String query, String TableName)
         {
             ad = new OleDbDataAdapter(query, con);
@@ -125,6 +185,6 @@ namespace DataBaseManagementSystem
             ad.Fill(ds, TableName);
 
             return ds;
-        }
+        } 
     }
 }
