@@ -9,6 +9,7 @@ namespace DataBaseManagementSystem
         OleDbConnection con;
 
         public Connection(String cP) { con = new OleDbConnection(cP); }
+        public Connection() { }
 
         // filling data apadter
         public OleDbDataAdapter fillDataWeGetBefore(String table_name)
@@ -53,6 +54,16 @@ namespace DataBaseManagementSystem
             }
 
             return t1;
+        }
+
+        public void CreateMDBfile(string filename)
+        {
+            ADOX.CatalogClass cat = new ADOX.CatalogClass();
+            
+            cat.Create("Provider=Microsoft.Jet.OLEDB.4.0;" +
+                             "Data Source = " + filename + ".mdb;" +
+                                     "Jet OLEDB:Engine Type=5");
+            cat = null;
         }
     }
 }

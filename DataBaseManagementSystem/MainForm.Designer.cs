@@ -32,6 +32,7 @@
             this.mainDataGrid = new System.Windows.Forms.DataGridView();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createFilemdbToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expotrToXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +78,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createFilemdbToolStripMenuItem,
             this.openToolStripMenuItem,
             this.exitToolStripMenuItem,
             this.expotrToXMLToolStripMenuItem});
@@ -84,23 +86,30 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // createFilemdbToolStripMenuItem
+            // 
+            this.createFilemdbToolStripMenuItem.Name = "createFilemdbToolStripMenuItem";
+            this.createFilemdbToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.createFilemdbToolStripMenuItem.Text = "Create file *.mdb";
+            this.createFilemdbToolStripMenuItem.Click += new System.EventHandler(this.createFilemdbToolStripMenuItem_Click);
+            // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.openToolStripMenuItem.Text = "Open *.mdb";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.exitToolStripMenuItem.Text = "Open *.XML";
             // 
             // expotrToXMLToolStripMenuItem
             // 
             this.expotrToXMLToolStripMenuItem.Name = "expotrToXMLToolStripMenuItem";
-            this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.expotrToXMLToolStripMenuItem.Text = "Expotr to XML";
             // 
             // xMLOperationToolStripMenuItem
@@ -283,5 +292,6 @@
         private System.Windows.Forms.TextBox whatToSearch;
         private System.Windows.Forms.ComboBox columnList;
         private System.Windows.Forms.Button editTable;
+        private System.Windows.Forms.ToolStripMenuItem createFilemdbToolStripMenuItem;
     }
 }
