@@ -12,7 +12,7 @@ namespace DataBaseManagementSystem
 {
     public partial class CreateMDBForm : Form
     {
-        public Connection con;
+        Connection con;
 
         public CreateMDBForm()
         {
@@ -21,9 +21,17 @@ namespace DataBaseManagementSystem
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            con = new Connection();
-            con.CreateMDBfile(textBoxDBName.Text);
-            Close();
+            if(textBoxDBName.Text != "")
+            {
+                con = new Connection();
+                con.CreateMDBfile(textBoxDBName.Text);
+                MessageBox.Show("DataBase `" + textBoxDBName.Text + "` was created.");
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Enter DataBase name!");
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
