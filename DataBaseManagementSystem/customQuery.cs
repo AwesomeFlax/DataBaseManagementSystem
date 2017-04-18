@@ -20,33 +20,11 @@ namespace DataBaseManagementSystem
         DataSet ds;
 
         private string selectedTable = "";
+        private List<string> queries;
 
         public customQuery()
         {
             InitializeComponent();
-
-            List<string> queries = new List<string>();
-            queries = SavingQueries.GetData();
-
-            if (queries.Count > 0)
-            {
-                foreach (string i in queries)
-                {
-                    userQuery.Items.Add(i);
-                }
-            }
-        }
-
-        // to get table 
-        string getSelectedTable()
-        {
-            return selectedTable;
-        }
-
-        // to set table
-        void setSelectedTable(string _selectedTable)
-        {
-            selectedTable = _selectedTable;
         }
 
         // constuctor to setup and upload everything
@@ -74,46 +52,57 @@ namespace DataBaseManagementSystem
                 OleDbDataAdapter ad = con.fillDataWeGetBefore(k);
                 ad.Fill(ds, k);
             }
+
+            queries = new List<string>();
+            queries = SavingQueries.GetData();
+
+            if (queries.Count > 0)
+            {
+                foreach (string i in queries)
+                {
+                    userQuery.Items.Add(i);
+                }
+            }
+
+            listBox.SelectedIndex = 0;
+        }
+
+        // to get table 
+        string getSelectedTable()
+        {
+            return selectedTable;
+        }
+
+        // to set table
+        void setSelectedTable(string _selectedTable)
+        {
+            selectedTable = _selectedTable;
         }
 
         // to get data according to SQL query
         private void sendQuery_Click(object sender, EventArgs e)
         {
-            //setSelectedTable(listBox.SelectedItem.ToString());
-            //searchGB.Enabled = true;
+            setSelectedTable(listBox.SelectedItem.ToString());
+            searchGB.Enabled = true;
 
-            //columnList.Items.Clear();
+            columnList.Items.Clear();
 
-            //for (int i = 0; i < ds.Tables[getSelectedTable()].Columns.Count; i++)
-            //{
-            //    columnList.Items.Add(ds.Tables[getSelectedTable()].Columns[i].ToString());
-            //}
+            for (int i = 0; i < ds.Tables[getSelectedTable()].Columns.Count; i++)
+            {
+                columnList.Items.Add(ds.Tables[getSelectedTable()].Columns[i].ToString());
+            }
 
-            //customDataGrid.AutoGenerateColumns = true;
-            //customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, getSelectedTable());
-            //customDataGrid.DataMember = getSelectedTable();
+            customDataGrid.AutoGenerateColumns = true;
+            customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, getSelectedTable());
+            customDataGrid.DataMember = getSelectedTable();
 
-            if(SaveQuery.Checked == true)
+            if (SaveQuery.Checked == true)
             {
                 try
                 {
-                    setSelectedTable(listBox.SelectedItem.ToString());
-                    searchGB.Enabled = true;
-
-                    columnList.Items.Clear();
-
-                    for (int i = 0; i < ds.Tables[getSelectedTable()].Columns.Count; i++)
-                    {
-                        columnList.Items.Add(ds.Tables[getSelectedTable()].Columns[i].ToString());
-                    }
-
-                    customDataGrid.AutoGenerateColumns = true;
-                    customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, getSelectedTable());
-                    customDataGrid.DataMember = getSelectedTable();
-
                     SavingQueries.SaveData(userQuery.Text);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
