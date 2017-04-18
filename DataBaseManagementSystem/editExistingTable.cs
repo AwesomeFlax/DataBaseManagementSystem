@@ -99,7 +99,7 @@ namespace DataBaseManagementSystem
             {
                 sqlQue.rename_column_in_table(
                 listBoxRenameColumn.SelectedItem.ToString(),
-                comboBoxColumnName.Text,
+                textBoxDeleteColumn.Text,
                 textBoxNewColumnName.Text,
                 comboBoxColumnTypeRename.SelectedItem.ToString());
 
