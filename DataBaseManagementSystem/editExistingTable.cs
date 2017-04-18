@@ -23,7 +23,7 @@ namespace DataBaseManagementSystem
         {
             InitializeComponent();
         }
-        
+
         // constuctor to access req fields and methods
         public editExistingTable(string CP, MainForm _refForm)
         {
@@ -69,7 +69,7 @@ namespace DataBaseManagementSystem
                 refForm.loadFromMDBFile();
                 Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -86,7 +86,7 @@ namespace DataBaseManagementSystem
                 refForm.loadFromMDBFile();
                 Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -97,16 +97,17 @@ namespace DataBaseManagementSystem
         {
             try
             {
-                sqlQue.rename_column_in_table(
-                listBoxRenameColumn.SelectedItem.ToString(),
-                textBoxDeleteColumn.Text,
-                textBoxNewColumnName.Text,
-                comboBoxColumnTypeRename.SelectedItem.ToString());
+                sqlQue.rename_column_in_table
+                    (
+                    listBoxRenameColumn.SelectedItem.ToString(),
+                    textBoxRenameColumn.Text,
+                    textBoxNewColumnName.Text,
+                    comboBoxColumnTypeRename.SelectedItem.ToString());
 
                 refForm.loadFromMDBFile();
                 Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
