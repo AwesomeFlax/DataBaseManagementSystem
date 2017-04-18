@@ -21,7 +21,7 @@ namespace DataBaseManagementSystem
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if(textBoxDBName.Text != "")
+            if (textBoxDBName.Text != "")
             {
                 con = new Connection();
                 con.CreateMDBfile(textBoxDBName.Text);

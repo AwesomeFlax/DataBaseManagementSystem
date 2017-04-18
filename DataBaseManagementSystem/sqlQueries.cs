@@ -10,6 +10,11 @@ namespace DataBaseManagementSystem
         OleDbConnection con;
         OleDbDataAdapter ad;
 
+        OleDbDataAdapter ad1;
+        OleDbDataAdapter ad2;
+        OleDbDataAdapter ad3;
+
+
         public sqlQueries(String cP) { con = new OleDbConnection(cP); }
 
         // update data in current row
@@ -159,15 +164,40 @@ namespace DataBaseManagementSystem
 
         public void rename_column_in_table(string TableName, string ColumnName, string NewColumnName, string Type)
         {
-            string query = "ALTER TABLE `" + TableName + "` CHANGE COLUMN `" + ColumnName + "` " + NewColumnName + " " + Type;
+            //string query = "ALTER TABLE `" + TableName + "` CHANGE COLUMN `" + ColumnName + "` " + NewColumnName + " " + Type;
 
-            ad = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
-            ad.UpdateCommand = new OleDbCommand(query, con);
-            
+            //ad = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            //ad.UpdateCommand = new OleDbCommand(query, con);
+
+            //try
+            //{
+            //    con.Open();
+            //    ad.UpdateCommand.ExecuteNonQuery();
+            //    con.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    con.Close();
+            //}
+
+            string queryAdd = "ALTER TABLE `" + TableName + "` ADD `" + NewColumnName + "` " + Type + "";
+            string queryUpdate = "UPDATE `" + TableName + "` SET `" + NewColumnName + "` = `" + ColumnName + "` ";
+            string queryDelete = "ALTER TABLE `" + TableName + "` DROP `" + ColumnName + "`";
+
+            ad1 = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            ad1.InsertCommand = new OleDbCommand(queryAdd, con);
+            ad2 = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            ad2.UpdateCommand = new OleDbCommand(queryUpdate, con);
+            ad3 = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
+            ad3.DeleteCommand = new OleDbCommand(queryDelete, con);
+
             try
             {
                 con.Open();
-                ad.UpdateCommand.ExecuteNonQuery();
+                ad1.InsertCommand.ExecuteNonQuery();
+                ad2.UpdateCommand.ExecuteNonQuery();
+                ad3.DeleteCommand.ExecuteNonQuery();
                 con.Close();
             }
             catch (Exception ex)

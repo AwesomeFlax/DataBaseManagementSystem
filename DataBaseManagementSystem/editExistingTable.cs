@@ -59,35 +59,57 @@ namespace DataBaseManagementSystem
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            sqlQue.add_column_to_table(
+            try
+            {
+                sqlQue.add_column_to_table(
                 listBoxAddColumn.SelectedItem.ToString(),
                 textBoxAddColumn.Text,
                 fieldTypeComboBoxAdd.SelectedItem.ToString());
 
-            refForm.loadFromMDBFile();
-            Close();
+                refForm.loadFromMDBFile();
+                Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            sqlQue.delete_column_from_table(
+            try
+            {
+                sqlQue.delete_column_from_table(
                 listBoxDeleteColumn.SelectedItem.ToString(),
                 textBoxDeleteColumn.Text);
 
-            refForm.loadFromMDBFile();
-            Close();
+                refForm.loadFromMDBFile();
+                Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void buttonRename_Click(object sender, EventArgs e)
         {
-            sqlQue.rename_column_in_table(
+            try
+            {
+                sqlQue.rename_column_in_table(
                 listBoxRenameColumn.SelectedItem.ToString(),
                 textBoxDeleteColumn.Text,
                 textBoxNewColumnName.Text,
                 comboBoxColumnTypeRename.SelectedItem.ToString());
 
-            refForm.loadFromMDBFile();
-            Close();
+                refForm.loadFromMDBFile();
+                Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

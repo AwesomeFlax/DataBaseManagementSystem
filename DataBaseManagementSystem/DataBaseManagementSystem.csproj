@@ -83,6 +83,8 @@
       <DependentUpon>newTableAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="SavingQueries.cs" />
+    <Compile Include="Serializers\Serializer.cs" />
     <Compile Include="sqlQueries.cs" />
     <Compile Include="Connection.cs" />
   </ItemGroup>

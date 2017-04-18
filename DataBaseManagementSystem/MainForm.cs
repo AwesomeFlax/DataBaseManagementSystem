@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ADOX;
+using DataBaseManagementSystem.Serializers;
 
 namespace DataBaseManagementSystem
 {
@@ -22,6 +23,7 @@ namespace DataBaseManagementSystem
         string selectedTable;
 
         DataSet ds;
+        private object ClientXmlSerializer;
 
         public MainForm()
         {
@@ -247,6 +249,24 @@ namespace DataBaseManagementSystem
         {
             CreateMDBForm cMDBf = new CreateMDBForm();
             cMDBf.Show();
+        }
+
+        private void expotrToXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //    saveFileDialog.Title = "Export db";
+            //    saveFileDialog.Filter = "Pliki formatu Xml (*.xml)|*.xml|Wszystkie pliki (*.*)|*.*";
+            //    if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //    {
+            //        Serializer.Serialize(ds, saveFileDialog.FileName);
+            //    }
+            //}
+            //catch (Exception x)
+            //{
+            //    MessageBox.Show("Error: " + x.Message);
+            //}
         }
     }
 }

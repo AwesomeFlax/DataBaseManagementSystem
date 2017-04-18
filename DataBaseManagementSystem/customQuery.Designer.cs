@@ -30,13 +30,14 @@
         {
             this.customDataGrid = new System.Windows.Forms.DataGridView();
             this.sendQuery = new System.Windows.Forms.Button();
-            this.userQuery = new System.Windows.Forms.TextBox();
             this.informer = new System.Windows.Forms.Label();
             this.columnList = new System.Windows.Forms.ComboBox();
             this.searchGB = new System.Windows.Forms.GroupBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.whatToSearch = new System.Windows.Forms.TextBox();
             this.listBox = new System.Windows.Forms.ListBox();
+            this.userQuery = new System.Windows.Forms.ComboBox();
+            this.SaveQuery = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.customDataGrid)).BeginInit();
             this.searchGB.SuspendLayout();
             this.SuspendLayout();
@@ -63,18 +64,11 @@
             this.sendQuery.UseVisualStyleBackColor = true;
             this.sendQuery.Click += new System.EventHandler(this.sendQuery_Click);
             // 
-            // userQuery
-            // 
-            this.userQuery.Location = new System.Drawing.Point(13, 36);
-            this.userQuery.Name = "userQuery";
-            this.userQuery.Size = new System.Drawing.Size(591, 20);
-            this.userQuery.TabIndex = 3;
-            // 
             // informer
             // 
             this.informer.AutoSize = true;
             this.informer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.informer.Location = new System.Drawing.Point(12, 16);
+            this.informer.Location = new System.Drawing.Point(12, 13);
             this.informer.Name = "informer";
             this.informer.Size = new System.Drawing.Size(385, 17);
             this.informer.TabIndex = 4;
@@ -130,15 +124,36 @@
             this.listBox.TabIndex = 7;
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
+            // userQuery
+            // 
+            this.userQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.userQuery.FormattingEnabled = true;
+            this.userQuery.Location = new System.Drawing.Point(15, 33);
+            this.userQuery.Name = "userQuery";
+            this.userQuery.Size = new System.Drawing.Size(485, 23);
+            this.userQuery.TabIndex = 9;
+            // 
+            // SaveQuery
+            // 
+            this.SaveQuery.AutoSize = true;
+            this.SaveQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.SaveQuery.Location = new System.Drawing.Point(506, 36);
+            this.SaveQuery.Name = "SaveQuery";
+            this.SaveQuery.Size = new System.Drawing.Size(98, 20);
+            this.SaveQuery.TabIndex = 10;
+            this.SaveQuery.Text = "Save Query";
+            this.SaveQuery.UseVisualStyleBackColor = true;
+            // 
             // customQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 406);
+            this.Controls.Add(this.SaveQuery);
+            this.Controls.Add(this.userQuery);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.searchGB);
             this.Controls.Add(this.informer);
-            this.Controls.Add(this.userQuery);
             this.Controls.Add(this.sendQuery);
             this.Controls.Add(this.customDataGrid);
             this.Name = "customQuery";
@@ -155,12 +170,13 @@
 
         private System.Windows.Forms.DataGridView customDataGrid;
         private System.Windows.Forms.Button sendQuery;
-        private System.Windows.Forms.TextBox userQuery;
         private System.Windows.Forms.Label informer;
         private System.Windows.Forms.ComboBox columnList;
         private System.Windows.Forms.GroupBox searchGB;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox whatToSearch;
         private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.ComboBox userQuery;
+        private System.Windows.Forms.CheckBox SaveQuery;
     }
 }

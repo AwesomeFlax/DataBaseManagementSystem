@@ -111,6 +111,7 @@
             this.expotrToXMLToolStripMenuItem.Name = "expotrToXMLToolStripMenuItem";
             this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.expotrToXMLToolStripMenuItem.Text = "Expotr to XML";
+            this.expotrToXMLToolStripMenuItem.Click += new System.EventHandler(this.expotrToXMLToolStripMenuItem_Click);
             // 
             // xMLOperationToolStripMenuItem
             // 

@@ -24,10 +24,21 @@ namespace DataBaseManagementSystem
         public customQuery()
         {
             InitializeComponent();
+
+            List<string> queries = new List<string>();
+            queries = SavingQueries.GetData();
+
+            if (queries.Count > 0)
+            {
+                foreach (string i in queries)
+                {
+                    userQuery.Items.Add(i);
+                }
+            }
         }
 
         // to get table 
-        string getSelectedTable ()
+        string getSelectedTable()
         {
             return selectedTable;
         }
@@ -68,19 +79,45 @@ namespace DataBaseManagementSystem
         // to get data according to SQL query
         private void sendQuery_Click(object sender, EventArgs e)
         {
-            setSelectedTable(listBox.SelectedItem.ToString());
-            searchGB.Enabled = true;
+            //setSelectedTable(listBox.SelectedItem.ToString());
+            //searchGB.Enabled = true;
 
-            columnList.Items.Clear();
+            //columnList.Items.Clear();
 
-            for (int i = 0; i < ds.Tables[getSelectedTable()].Columns.Count; i++)
+            //for (int i = 0; i < ds.Tables[getSelectedTable()].Columns.Count; i++)
+            //{
+            //    columnList.Items.Add(ds.Tables[getSelectedTable()].Columns[i].ToString());
+            //}
+
+            //customDataGrid.AutoGenerateColumns = true;
+            //customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, getSelectedTable());
+            //customDataGrid.DataMember = getSelectedTable();
+
+            if(SaveQuery.Checked == true)
             {
-                columnList.Items.Add(ds.Tables[getSelectedTable()].Columns[i].ToString());
-            }
+                try
+                {
+                    setSelectedTable(listBox.SelectedItem.ToString());
+                    searchGB.Enabled = true;
 
-            customDataGrid.AutoGenerateColumns = true;
-            customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, getSelectedTable());
-            customDataGrid.DataMember = getSelectedTable();
+                    columnList.Items.Clear();
+
+                    for (int i = 0; i < ds.Tables[getSelectedTable()].Columns.Count; i++)
+                    {
+                        columnList.Items.Add(ds.Tables[getSelectedTable()].Columns[i].ToString());
+                    }
+
+                    customDataGrid.AutoGenerateColumns = true;
+                    customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, getSelectedTable());
+                    customDataGrid.DataMember = getSelectedTable();
+
+                    SavingQueries.SaveData(userQuery.Text);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         // set up default string into string query
