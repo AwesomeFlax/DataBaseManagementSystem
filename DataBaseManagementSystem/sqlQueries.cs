@@ -183,21 +183,21 @@ namespace DataBaseManagementSystem
 
             string queryAdd = "ALTER TABLE `" + TableName + "` ADD `" + NewColumnName + "` " + Type + "";
             string queryUpdate = "UPDATE `" + TableName + "` SET `" + NewColumnName + "` = `" + ColumnName + "` ";
-            string queryDelete = "ALTER TABLE `" + TableName + "` DROP `" + ColumnName + "`";
+            string queryDelete = "UPDATE `" + TableName + "` DROP `" + ColumnName + "`";
 
             ad1 = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
             ad1.InsertCommand = new OleDbCommand(queryAdd, con);
             ad2 = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
             ad2.UpdateCommand = new OleDbCommand(queryUpdate, con);
             ad3 = new OleDbDataAdapter("Select * FROM " + TableName + "", con);
-            ad3.DeleteCommand = new OleDbCommand(queryDelete, con);
+            ad3.UpdateCommand = new OleDbCommand(queryDelete, con);
 
             try
             {
                 con.Open();
                 ad1.InsertCommand.ExecuteNonQuery();
                 ad2.UpdateCommand.ExecuteNonQuery();
-                ad3.DeleteCommand.ExecuteNonQuery();
+                ad3.UpdateCommand.ExecuteNonQuery();
                 con.Close();
             }
             catch (Exception ex)
