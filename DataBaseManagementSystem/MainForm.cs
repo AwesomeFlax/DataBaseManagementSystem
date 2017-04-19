@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using ADOX;
 using DataBaseManagementSystem.Serializers;
+using System.IO;
 
 namespace DataBaseManagementSystem
 {
@@ -247,8 +248,23 @@ namespace DataBaseManagementSystem
 
         private void createFilemdbToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateMDBForm cMDBf = new CreateMDBForm();
-            cMDBf.Show();
+            try
+            {
+                SaveFileDialog createMDB = new SaveFileDialog();
+                createMDB.Title = "Create *.mdb file";
+                createMDB.Filter = "DataBase files (*.mdb)|*.*";
+                
+                if (createMDB.ShowDialog() == DialogResult.OK)
+                {
+                    con = new Connection();
+                    string fileName = createMDB.FileName;
+                    con.CreateMDBfile(fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void expotrToXMLToolStripMenuItem_Click(object sender, EventArgs e)
