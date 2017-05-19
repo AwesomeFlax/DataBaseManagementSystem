@@ -89,27 +89,29 @@
             // createFilemdbToolStripMenuItem
             // 
             this.createFilemdbToolStripMenuItem.Name = "createFilemdbToolStripMenuItem";
-            this.createFilemdbToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.createFilemdbToolStripMenuItem.Text = "Create file *.mdb";
+            this.createFilemdbToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.createFilemdbToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.createFilemdbToolStripMenuItem.Text = "New *.mdb";
             this.createFilemdbToolStripMenuItem.Click += new System.EventHandler(this.createFilemdbToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.openToolStripMenuItem.Text = "Open *.mdb";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.exitToolStripMenuItem.Text = "Open *.XML";
             // 
             // expotrToXMLToolStripMenuItem
             // 
             this.expotrToXMLToolStripMenuItem.Name = "expotrToXMLToolStripMenuItem";
-            this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.expotrToXMLToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.expotrToXMLToolStripMenuItem.Text = "Expotr to XML";
             this.expotrToXMLToolStripMenuItem.Click += new System.EventHandler(this.expotrToXMLToolStripMenuItem_Click);
             // 

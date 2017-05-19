@@ -191,7 +191,14 @@ namespace DataBaseManagementSystem
             ad = new OleDbDataAdapter(query, con);
             DataSet ds = new DataSet();
 
-            ad.Fill(ds, TableName);
+            try
+            {
+                ad.Fill(ds, TableName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
             return ds;
         }

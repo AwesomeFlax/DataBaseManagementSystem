@@ -94,7 +94,15 @@ namespace DataBaseManagementSystem
 
             customDataGrid.AutoGenerateColumns = true;
             customDataGrid.DataSource = sqlQue.custom_que(userQuery.Text, getSelectedTable());
-            customDataGrid.DataMember = getSelectedTable();
+
+            try
+            {
+                customDataGrid.DataMember = getSelectedTable();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
             if (SaveQuery.Checked == true)
             {

@@ -48,8 +48,8 @@
             this.labelColumnTypeRename = new System.Windows.Forms.Label();
             this.buttonRename = new System.Windows.Forms.Button();
             this.comboBoxColumnTypeRename = new System.Windows.Forms.ComboBox();
-            this.textBoxRenameColumn = new System.Windows.Forms.TextBox();
             this.listBoxRenameColumn = new System.Windows.Forms.ListBox();
+            this.textBoxRenameColumn = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.addNewColumn.SuspendLayout();
             this.deleteColumn.SuspendLayout();
@@ -196,13 +196,13 @@
             // 
             // renameColumn
             // 
+            this.renameColumn.Controls.Add(this.textBoxRenameColumn);
             this.renameColumn.Controls.Add(this.textBoxNewColumnName);
             this.renameColumn.Controls.Add(this.labelNewColumnName);
             this.renameColumn.Controls.Add(this.labelColumnNameRename);
             this.renameColumn.Controls.Add(this.labelColumnTypeRename);
             this.renameColumn.Controls.Add(this.buttonRename);
             this.renameColumn.Controls.Add(this.comboBoxColumnTypeRename);
-            this.renameColumn.Controls.Add(this.textBoxRenameColumn);
             this.renameColumn.Controls.Add(this.listBoxRenameColumn);
             this.renameColumn.Location = new System.Drawing.Point(4, 22);
             this.renameColumn.Name = "renameColumn";
@@ -274,13 +274,6 @@
             this.comboBoxColumnTypeRename.Size = new System.Drawing.Size(157, 21);
             this.comboBoxColumnTypeRename.TabIndex = 10;
             // 
-            // textBoxRenameColumn
-            // 
-            this.textBoxRenameColumn.Location = new System.Drawing.Point(160, 25);
-            this.textBoxRenameColumn.Name = "textBoxRenameColumn";
-            this.textBoxRenameColumn.Size = new System.Drawing.Size(157, 20);
-            this.textBoxRenameColumn.TabIndex = 9;
-            // 
             // listBoxRenameColumn
             // 
             this.listBoxRenameColumn.FormattingEnabled = true;
@@ -288,6 +281,13 @@
             this.listBoxRenameColumn.Name = "listBoxRenameColumn";
             this.listBoxRenameColumn.Size = new System.Drawing.Size(144, 264);
             this.listBoxRenameColumn.TabIndex = 8;
+            // 
+            // textBoxRenameColumn
+            // 
+            this.textBoxRenameColumn.Location = new System.Drawing.Point(160, 29);
+            this.textBoxRenameColumn.Name = "textBoxRenameColumn";
+            this.textBoxRenameColumn.Size = new System.Drawing.Size(157, 20);
+            this.textBoxRenameColumn.TabIndex = 16;
             // 
             // editExistingTable
             // 
@@ -328,9 +328,9 @@
         private System.Windows.Forms.Label labelColumnTypeRename;
         private System.Windows.Forms.Button buttonRename;
         private System.Windows.Forms.ComboBox comboBoxColumnTypeRename;
-        private System.Windows.Forms.TextBox textBoxRenameColumn;
         private System.Windows.Forms.ListBox listBoxRenameColumn;
         private System.Windows.Forms.TextBox textBoxNewColumnName;
         private System.Windows.Forms.Label labelNewColumnName;
+        private System.Windows.Forms.TextBox textBoxRenameColumn;
     }
 }

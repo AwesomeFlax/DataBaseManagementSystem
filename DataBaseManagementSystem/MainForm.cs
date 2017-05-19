@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ADOX;
-using DataBaseManagementSystem.Serializers;
 using System.IO;
 
 namespace DataBaseManagementSystem
