@@ -197,7 +197,7 @@ namespace DataBaseManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
 
             return ds;

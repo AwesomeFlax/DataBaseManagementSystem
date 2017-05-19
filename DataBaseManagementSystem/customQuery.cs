@@ -101,7 +101,7 @@ namespace DataBaseManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
 
             if (SaveQuery.Checked == true)
