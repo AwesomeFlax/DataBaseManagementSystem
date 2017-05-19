@@ -9,12 +9,7 @@ namespace DataBaseManagementSystem
     {
         OleDbConnection con;
         OleDbDataAdapter ad;
-
-        OleDbDataAdapter ad1;
-        OleDbDataAdapter ad2;
-        OleDbDataAdapter ad3;
-
-
+        
         public sqlQueries(String cP) { con = new OleDbConnection(cP); }
 
         // update data in current row
