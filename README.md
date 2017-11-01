@@ -26,6 +26,7 @@ OleDB used as way to connect with database, app is made with WF usage.
 ## Authors
 
 * **Denis Krutko** - *Main code* - [My GH](https://github.com/AwesomeFlax)
+* **Mykola Haravetskyy** - *Main code* 
 
 ## Screenshots
 
