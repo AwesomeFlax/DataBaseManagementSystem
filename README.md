@@ -6,7 +6,7 @@ That app allows you to create, view, fill and edit Access database file without 
 
 Just get that project and run it in VS2015 or above.
 
-### ### Requirements
+### Requirements
 
 You will need VS2015 or above to run in and nothing else.
 
